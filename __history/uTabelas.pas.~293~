@@ -48,6 +48,7 @@ type
     Panel9: TPanel;
     StringGrid1: TStringGrid;
     StatusBar1: TStatusBar;
+    StringGrid2: TStringGrid;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBGrid5CellClick(Column: TColumn);
@@ -90,6 +91,7 @@ var
   objFB       : buscarTabelas ;
   objDBGrid   : buscarTabelas ;
   objDBGridMySQL : buscarTabelas ;
+  cds         : TClientDataSet ;
   valor_linha , valor_coluna : String ;
 
 class procedure TfrmConsulta.criarForm ();
@@ -115,6 +117,7 @@ begin
   FreeAndNil(objFB);
   FreeAndNil(objDBGrid);
   FreeAndNil(objDBGridMySQL);
+  FreeAndNil(Cds);
 end;
 
 procedure TfrmConsulta.SpeedButton1Click(Sender: TObject);
@@ -156,7 +159,7 @@ var
   s : string;
 begin
   gc := THackDBGrid(DBGrid1).MouseCoord(X,Y);
-  if (gc.X > 0) AND (gc.Y > 0) then
+  //if (gc.X > 0) AND (gc.Y > 0) then
   begin
     s := dbGrid1.Columns.Grid.SelectedField.FieldName ;
     with THackDBGrid(DBGrid1) do
@@ -166,7 +169,7 @@ begin
       if not( trim( s )='' ) then
       begin
         StringGrid1.Cells[gc.X,gc.Y] := s ;
-        //alimentaDados( ) ;
+        alimentaDados(s , label_nomeTabSelecionada.Caption) ;
       end;
     end;
 
@@ -174,9 +177,27 @@ begin
 end;
 
 procedure TfrmConsulta.alimentaDados(sNomeColuna : String; sNomeTabela : String );
+var
+  q : buscarTabelas ;
+  i : Integer ;
 begin
-  //dadosCDS ;
-  //objMY.buscaColuna(sNomeColuna, sNomeTabela);
+  try
+    i := 0 ;
+    q   := buscarTabelas.Create(tpFirebird);
+    q.conexaoFB.setFQry('SELECT ' + sNomeColuna + ' FROM ' + sNomeTabela) ;
+    while not q.conexaoFB.getFQry.Eof  do
+    begin
+      cds.FieldDefs.Add(q.conexaoFB.getFQry.FieldByName(sNomeColuna).AsString, ftString, 50);
+      cds.Next;
+    end;
+
+    while not cds.Eof do
+    BEGIN
+      StringGrid1.Rows[1].Add(cds.FieldByName(sNomeColuna).AsString);
+    END;
+  finally
+    q.Free;
+  end;
 end;
 
 procedure TfrmConsulta.StringGrid1DragOver(Sender, Source: TObject; X,
@@ -274,11 +295,12 @@ begin
 end;
 procedure TfrmConsulta.criarObjetos;
 begin
-  //cds             := TClientDataSet.Create();
+  cds             := TClientDataSet.Create(nil);
   objMY           := buscarTabelas.Create(tpMYSQL);
   objFB           := buscarTabelas.Create(tpFirebird);
   objDBGrid       := buscarTabelas.Create(tpFirebird);
   objDBGridMySQL  := buscarTabelas.Create(tpMYSQL);
+
 end;
 
 procedure TfrmConsulta.DrawControl(Control: TWinControl) ;

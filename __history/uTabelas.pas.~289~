@@ -157,7 +157,7 @@ var
   s : string;
 begin
   gc := THackDBGrid(DBGrid1).MouseCoord(X,Y);
-  if (gc.X > 0) AND (gc.Y > 0) then
+  //if (gc.X > 0) AND (gc.Y > 0) then
   begin
     s := dbGrid1.Columns.Grid.SelectedField.FieldName ;
     with THackDBGrid(DBGrid1) do
@@ -175,11 +175,21 @@ begin
 end;
 
 procedure TfrmConsulta.alimentaDados(sNomeColuna : String; sNomeTabela : String );
-var q : buscarTabelas ;
+var
+  q : buscarTabelas ;
+  i : Integer ;
 begin
-  q := buscarTabelas.Create(tpFirebird);
-  q.conexaoFB.setFQry('SELECT ' + sNomeColuna + ' FROM ' + sNomeTabela) ;
- //cds  = objFB ;
+  try
+    i := 0 ;
+    q   := buscarTabelas.Create(tpFirebird);
+    q.conexaoFB.setFQry('SELECT ' + sNomeColuna + ' FROM ' + sNomeTabela) ;
+    while not q.conexaoFB.getFQry.Eof  do
+    begin
+      cds.FieldDefs.Add(q.conexaoFB.getFQry.FieldByName(sNomeColuna), ftString, 50);
+    end;
+  finally
+    q.Free;
+  end;
 end;
 
 procedure TfrmConsulta.StringGrid1DragOver(Sender, Source: TObject; X,

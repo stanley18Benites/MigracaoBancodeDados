@@ -48,7 +48,7 @@ type
     Panel9: TPanel;
     StringGrid1: TStringGrid;
     StatusBar1: TStatusBar;
-    cds       : TClientDataSet ;
+    StringGrid2: TStringGrid;
     procedure FormDestroy(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DBGrid5CellClick(Column: TColumn);
@@ -91,6 +91,7 @@ var
   objFB       : buscarTabelas ;
   objDBGrid   : buscarTabelas ;
   objDBGridMySQL : buscarTabelas ;
+  cds         : TClientDataSet ;
   valor_linha , valor_coluna : String ;
 
 class procedure TfrmConsulta.criarForm ();
@@ -116,7 +117,7 @@ begin
   FreeAndNil(objFB);
   FreeAndNil(objDBGrid);
   FreeAndNil(objDBGridMySQL);
-//  FreeAndNil(dadosCds);
+  FreeAndNil(Cds);
 end;
 
 procedure TfrmConsulta.SpeedButton1Click(Sender: TObject);
@@ -184,12 +185,16 @@ begin
     i := 0 ;
     q   := buscarTabelas.Create(tpFirebird);
     q.conexaoFB.setFQry('SELECT ' + sNomeColuna + ' FROM ' + sNomeTabela) ;
-    for I := 0 to q.conexaoFB.getFQry.RecordCount do
+    while not q.conexaoFB.getFQry.Eof  do
     begin
-      cds.FieldDefs.Add(q.conexaoFB.getFQry);
+      cds.FieldDefs.Add(q.conexaoFB.getFQry.FieldByName(sNomeColuna).AsString, ftString, 50);
+      q.conexaoFB.getFQry.Next;
     end;
-    //cds.
-    //cds := q.conexaoFB.getFQry ;
+
+    while not cds.Eof do
+    BEGIN
+      StringGrid1.Rows[1].Add(cds.FieldByName(sNomeColuna).AsString);
+    END;
   finally
     q.Free;
   end;
@@ -295,7 +300,7 @@ begin
   objFB           := buscarTabelas.Create(tpFirebird);
   objDBGrid       := buscarTabelas.Create(tpFirebird);
   objDBGridMySQL  := buscarTabelas.Create(tpMYSQL);
-  //dadosCDS        := dadosCDS.Create(4);
+
 end;
 
 procedure TfrmConsulta.DrawControl(Control: TWinControl) ;

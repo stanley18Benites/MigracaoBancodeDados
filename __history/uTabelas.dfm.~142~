@@ -161,7 +161,7 @@ object frmConsulta: TfrmConsulta
       ParentBackground = False
       TabOrder = 3
       object DBGrid6: TDBGrid
-        Left = 141
+        Left = 146
         Top = 49
         Width = 128
         Height = 465
@@ -194,24 +194,24 @@ object frmConsulta: TfrmConsulta
         ExplicitTop = -28
       end
       object Panel9: TPanel
-        Left = 21
+        Left = 12
         Top = 49
-        Width = 123
-        Height = 466
+        Width = 130
+        Height = 465
         BevelOuter = bvNone
         TabOrder = 2
         object StringGrid1: TStringGrid
-          Left = -4
-          Top = 0
-          Width = 137
-          Height = 446
+          Left = 3
+          Top = 19
+          Width = 128
+          Height = 442
           BevelInner = bvNone
           BevelOuter = bvNone
           BorderStyle = bsNone
           Color = cl3DDkShadow
           ColCount = 1
           DefaultColWidth = 125
-          DefaultRowHeight = 18
+          DefaultRowHeight = 15
           FixedCols = 0
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -226,9 +226,9 @@ object frmConsulta: TfrmConsulta
         end
       end
       object StatusBar1: TStatusBar
-        Left = 21
+        Left = 15
         Top = 518
-        Width = 255
+        Width = 259
         Height = 19
         Align = alNone
         Panels = <>
@@ -241,12 +241,13 @@ object frmConsulta: TfrmConsulta
       Height = 640
       Align = alCustom
       BevelOuter = bvNone
+      Color = clMedGray
       ParentBackground = False
       TabOrder = 4
       OnMouseMove = pnlLateralMouseMove
       object Panel5: TPanel
         Left = 30
-        Top = 489
+        Top = 518
         Width = 112
         Height = 46
         Align = alCustom
@@ -262,12 +263,13 @@ object frmConsulta: TfrmConsulta
           Align = alClient
           Caption = 'TRANSFERIR'
           Flat = True
+          OnClick = SpeedButton2Click
           OnMouseMove = SpeedButton1MouseMoveSpeedButton1MouseMoveSpeedButton2MouseMove
-          ExplicitWidth = 57
+          ExplicitTop = 5
         end
       end
       object Panel8: TPanel
-        Left = 26
+        Left = 30
         Top = 569
         Width = 112
         Height = 46
@@ -289,6 +291,30 @@ object frmConsulta: TfrmConsulta
           ExplicitTop = -7
         end
       end
+    end
+    object StringGrid2: TStringGrid
+      Left = 1123
+      Top = 215
+      Width = 128
+      Height = 395
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      Color = cl3DDkShadow
+      ColCount = 1
+      DefaultColWidth = 125
+      DefaultRowHeight = 15
+      FixedCols = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      ScrollBars = ssVertical
+      TabOrder = 5
+      OnDragDrop = StringGrid1DragDrop
+      OnDragOver = StringGrid1DragOver
     end
   end
 end

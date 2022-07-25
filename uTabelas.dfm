@@ -191,7 +191,6 @@ object frmConsulta: TfrmConsulta
         ParentBackground = False
         ParentColor = True
         TabOrder = 1
-        ExplicitTop = -28
       end
       object Panel9: TPanel
         Left = 12
@@ -291,6 +290,30 @@ object frmConsulta: TfrmConsulta
           ExplicitTop = -7
         end
       end
+    end
+    object StringGrid2: TStringGrid
+      Left = 1123
+      Top = 215
+      Width = 128
+      Height = 395
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      BorderStyle = bsNone
+      Color = cl3DDkShadow
+      ColCount = 1
+      DefaultColWidth = 125
+      DefaultRowHeight = 15
+      FixedCols = 0
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      ScrollBars = ssVertical
+      TabOrder = 5
+      OnDragDrop = StringGrid1DragDrop
+      OnDragOver = StringGrid1DragOver
     end
   end
 end
