@@ -1,0 +1,45 @@
+unit uConexao;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TfrmConsulta = class(TForm)
+    gBoxSaida: TGroupBox;
+    DBGrid5: TDBGrid;
+    DBGrid1: TDBGrid;
+    gBoxEntrada: TGroupBox;
+    DBGrid2: TDBGrid;
+    DBGrid3: TDBGrid;
+    btMigrar: TButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+  private
+    { Private declarations }
+  public
+   procedure TCriar();
+  end;
+
+var
+  frmConsulta: TfrmConsulta;
+
+implementation
+{$R *.dfm}
+
+procedure TfrmConsulta.TCriar;
+begin
+  try
+    frmConsulta := TfrmConsulta.Create(nil);
+    frmConsulta.ShowModal;
+  finally
+    frmConsulta.Free;
+  end;
+end;
+
+end.

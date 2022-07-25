@@ -1,0 +1,26 @@
+unit migracaoBD.Pages.Messages;
+
+interface
+uses
+  Winapi.Windows,
+  Vcl.Forms;
+  const
+    MSG_BDERROCONEXAO    = 'BANCO DE DADOS NAO CONECTADO. VERIFIQUE A CONEXAO.';
+    MSG_BDCONECTADO      = 'CONECTADO';
+    MSG_BDNAOCONECTADO   = 'NAO CONECTADO';
+    MSG_BDNAOSELECIONADO = 'BANCO DE DADOS NAO SELECIONADO';
+    MSG_TBVAZIA          = 'TABELA VAZIA';
+
+type Style = class
+  public
+    class function msg_erroConectarBD ;
+end;
+implementation
+{ Style }
+
+class function Style.msg_erroConectarBD : Application;
+begin
+  Application.MessageBox('Deseja excluir este estabelecimento?','EXCLUSÃO') ;
+end;
+
+end.

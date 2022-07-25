@@ -1,0 +1,14 @@
+{
+	"hash": "d41d8cd98f00b204e9800998ecf8427e",
+	"updated": "2022-07-19T09:14:12.1952004-04:00",
+	"installedModules": {
+		"https://github.com/adrianosantostreina/adrconnection": {
+			"name": "adrconnection",
+			"version": "2.0.2",
+			"hash": "4d7b2e433c7964b2ac7967353905b973",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
+		}
+	}
+}

@@ -1,0 +1,15 @@
+unit migracaoBD.Pages.Messages;
+
+interface
+  const
+
+    MSG_BDERROCONEXAO    = 'BANCO DE DADOS NAO CONECTADO. VERIFIQUE A CONEXAO.';
+    MSG_BDCONECTADO      = 'CONECTADO';
+    MSG_BDNAOCONECTADO   = 'NAO CONECTADO';
+    MSG_BDNAOSELECIONADO = 'BANCO DE DADOS NAO SELECIONADO';
+    MSG_TBVAZIA          = 'TABELA VAZIA';
+
+implementation
+
+
+end.

@@ -1,0 +1,25 @@
+program migracaoBD;
+
+uses
+  Vcl.Forms,
+  uMenu in 'uMenu.pas' {frmMenu},
+  uTabelas in 'uTabelas.pas' {frmConsulta},
+  //{$R}
+  //{$R}
+  //{$R}
+  //{$R}
+  //{$R}
+  uClasseConexao in 'uClasseConexao.pas' {$R *.res},
+  uClasseBuscarTabelasBD in 'uClasseBuscarTabelasBD.pas',
+  migracaoBd.View.Style.Colors in 'Pages\Style\Colors\migracaoBd.View.Style.Colors.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  ReportMemoryLeaksOnShutdown := true ;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMenu, frmMenu);
+  //Application.CreateForm(TfrmConsulta, frmConsulta);
+  Application.Run;
+end.

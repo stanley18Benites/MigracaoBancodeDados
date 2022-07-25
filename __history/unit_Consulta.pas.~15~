@@ -1,0 +1,59 @@
+unit unit_Consulta;
+interface
+uses FireDac.Comp.Client, VCL.DIalogs;
+  type TConsulta = class
+    private
+      FqryMerchant : TFDQuery ;
+      FqryBancoDesconhecido : TFDQuery;
+      FTConnectionMerchant : TFDConnection ;
+      property qryMerchant : TFDQuery read FqryMerchant write FqryMerchant ;
+      property qryBancoDesconhecido : TFDQuery read FqryBancoDesconhecido write FqryBancoDesconhecido ;
+      property tConnectionMerchant : TFDConnection read FTConnectionMerchant write FTConnectionMerchant ;
+    public
+      Constructor Create () ;
+      Destructor destroy ;Override;
+      function  conectarBancoMerchant() : boolean;
+      function conectarBancoDesconhecido() : boolean;
+  end;
+implementation
+var obj : TConsulta ;
+Constructor TConsulta.Create;
+begin
+  obj := TConsulta.Create;
+  obj.conectarBancoMerchant ;
+end;
+
+Destructor TConsulta.Destroy;
+begin
+  obj.Free;
+end;
+
+function TConsulta.conectarBancoMerchant() : boolean;
+var tConnectionMerchant : TFDConnection ;
+begin
+try
+  tConnectionMerchant := TFDConnection.Create(nil);
+  if not tConnectionMerchant.Connected then
+  begin
+    try
+
+    except
+      Showmessage('Não foi possível conectar, verifique se o MySQL esteja carregado'+
+                  'e/ou a configuração esteja correta.')
+    end;
+  end;
+  if tConnectionMerchant.Connected  then
+  begin
+
+  end;
+  result := true ;
+finally
+  tConnectionMerchant.Free;
+end;
+end;
+
+function TConsulta.conectarBancoDesconhecido() : boolean;
+begin
+  result := true ;
+end;
+end.

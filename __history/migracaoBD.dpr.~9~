@@ -1,0 +1,18 @@
+program migracaoBD;
+
+uses
+  Vcl.Forms,
+  uMenu in 'uMenu.pas' {frmMenu},
+  uTabelas in 'uTabelas.pas' {frmConsulta},
+  uClasseConexao in 'uClasseConexao.pas';
+
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmMenu, frmMenu);
+  Application.CreateForm(TfrmConsulta, frmConsulta);
+  Application.Run;
+end.

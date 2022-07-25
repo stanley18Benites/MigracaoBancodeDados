@@ -1,0 +1,31 @@
+unit unit_Consulta;
+interface
+uses FireDac.Comp.Client;
+  type TConsulta = class
+  private
+    FqryMerchant : TFDQuery ;
+    FqryBancoDesconhecido : TFDQuery;
+  public
+    Constructor Create () ;
+    Destructor destroy ;Override;
+    property qryMerchant : TFDQuery read FqryMerchant write FqryMerchant ;
+    property qryBancoDesconhecido : TFDQuery read FqryBancoDesconhecido write FqryBancoDesconhecido ;
+    function conectarBandoMerchant();
+  end;
+implementation
+var obj : TConsulta ;
+Constructor TConsulta.Create;
+begin
+  obj := TConsulta.Create;
+end;
+
+Destructor TConsulta.Destroy;
+begin
+  obj.Free;
+end;
+
+function TConsulta.conectarBandoMerchant();
+begin
+
+end;
+end.

@@ -1,0 +1,137 @@
+object frmConsulta: TfrmConsulta
+  Left = 0
+  Top = 0
+  Caption = 'frmConsulta'
+  ClientHeight = 461
+  ClientWidth = 959
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object gBoxSaida: TGroupBox
+    Left = 8
+    Top = 8
+    Width = 399
+    Height = 441
+    Caption = 'SAIDA'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 14
+      Top = 23
+      Width = 167
+      Height = 13
+      Caption = 'TABELAS DO BANCO DE DADOS'
+    end
+    object Label2: TLabel
+      Left = 198
+      Top = 79
+      Width = 182
+      Height = 13
+      Caption = 'DADOS DA TABELA SELECIONADA'
+    end
+    object DBGrid5: TDBGrid
+      Left = 3
+      Top = 42
+      Width = 189
+      Height = 386
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = [fsBold]
+    end
+    object DBGrid1: TDBGrid
+      Left = 198
+      Top = 98
+      Width = 189
+      Height = 330
+      TabOrder = 1
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = [fsBold]
+    end
+  end
+  object gBoxEntrada: TGroupBox
+    Left = 546
+    Top = 8
+    Width = 400
+    Height = 441
+    Caption = 'ENTRADA'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+    object Label3: TLabel
+      Left = 217
+      Top = 23
+      Width = 167
+      Height = 13
+      Caption = 'TABELAS DO BANCO DE DADOS'
+    end
+    object Label4: TLabel
+      Left = 13
+      Top = 79
+      Width = 182
+      Height = 13
+      Caption = 'DADOS DA TABELA SELECIONADA'
+    end
+    object DBGrid2: TDBGrid
+      Left = 9
+      Top = 98
+      Width = 189
+      Height = 330
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = [fsBold]
+    end
+    object DBGrid3: TDBGrid
+      Left = 208
+      Top = 42
+      Width = 189
+      Height = 386
+      TabOrder = 1
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = [fsBold]
+    end
+  end
+  object btMigrar: TButton
+    Left = 441
+    Top = 411
+    Width = 75
+    Height = 25
+    Caption = 'TRANSFERIR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -9
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+    OnClick = btMigrarClick
+  end
+end

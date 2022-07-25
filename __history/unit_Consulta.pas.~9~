@@ -1,0 +1,22 @@
+unit unit_Consulta;
+interface
+uses FireDac.Comp.Client;
+  type TConsulta = class
+  private
+    FqryMerchant : TFDQuery ;
+    FqryBancoDesconhecido : TFDQuery;
+  public
+    class procedure TConsulta.Create () ;
+    destructor destroy ;
+    property qryM : TFDQuery read FqryMerchant write FqryMerchant ;
+    property qryBancoDesconhecido : TFDQuery read FqryBancoDesconhecido write FqryBancoDesconhecido ;
+  end;
+implementation
+
+class procedure TConsulta.Create () ;
+Var obj : TConsulta;
+begin
+  obj := TConsulta.Create(nil);
+end;
+
+end.
