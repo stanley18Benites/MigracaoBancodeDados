@@ -35,7 +35,7 @@ uses
   FireDac.Phys.FB,
   migracaoBd.View.Style.Colors,
   Vcl.Buttons,
-  Vcl.Imaging.pngimage, System.ImageList, Vcl.ImgList;
+  Vcl.Imaging.pngimage, System.ImageList, Vcl.ImgList, Datasnap.DBClient;
 
 type
   TfrmMenu = class(TForm)
@@ -81,6 +81,8 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     ImageList1: TImageList;
+    ClientDataSet1: TClientDataSet;
+    FDQuery1: TFDQuery;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);

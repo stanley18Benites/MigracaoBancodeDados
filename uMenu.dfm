@@ -2,7 +2,7 @@ object frmMenu: TfrmMenu
   Left = 0
   Top = 55
   BorderStyle = bsNone
-  ClientHeight = 418
+  ClientHeight = 417
   ClientWidth = 560
   Color = clWhite
   DefaultMonitor = dmDesktop
@@ -23,38 +23,33 @@ object frmMenu: TfrmMenu
     Left = 0
     Top = 0
     Width = 560
-    Height = 418
+    Height = 417
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 554
-    ExplicitHeight = 389
+    ExplicitHeight = 418
     object pnlFull: TPanel
       Left = 133
       Top = 0
       Width = 427
-      Height = 418
+      Height = 417
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 421
-      ExplicitHeight = 389
+      ExplicitHeight = 418
       object Panel8: TPanel
         Left = 0
         Top = 0
         Width = 427
-        Height = 418
+        Height = 417
         Align = alClient
         BevelOuter = bvNone
         Color = 15329769
         ParentBackground = False
         TabOrder = 0
-        ExplicitLeft = -4
-        ExplicitTop = 14
-        ExplicitWidth = 421
-        ExplicitHeight = 389
+        ExplicitHeight = 418
         object Panel5: TPanel
           Left = 212
           Top = 126
@@ -77,7 +72,7 @@ object frmMenu: TfrmMenu
             Left = 8
             Top = 64
             Width = 36
-            Height = 11
+            Height = 13
             Caption = 'Usuario'
           end
           object Label6: TLabel
@@ -182,9 +177,6 @@ object frmMenu: TfrmMenu
             Color = 6579455
             ParentBackground = False
             TabOrder = 5
-            ExplicitLeft = 1
-            ExplicitTop = 2
-            ExplicitWidth = 186
           end
           object Button3: TButton
             Left = 8
@@ -430,7 +422,14 @@ object frmMenu: TfrmMenu
           Height = 21
           BevelInner = bvNone
           BevelOuter = bvNone
+          Style = csDropDownList
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = [fsBold]
           ItemIndex = 0
+          ParentFont = False
           TabOrder = 0
           Text = 'FireBird'
           OnDrawItem = cbSaidaDrawItem
@@ -444,6 +443,7 @@ object frmMenu: TfrmMenu
           Height = 21
           BevelInner = bvNone
           BevelOuter = bvNone
+          Style = csDropDownList
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -463,12 +463,12 @@ object frmMenu: TfrmMenu
       Left = 0
       Top = 0
       Width = 133
-      Height = 418
+      Height = 417
       Align = alLeft
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 389
+      ExplicitHeight = 418
       object Panel10: TPanel
         Left = 11
         Top = 311
@@ -527,7 +527,7 @@ object frmMenu: TfrmMenu
     Left = 518
     Top = 14
     Bitmap = {
-      494C010102000800200020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000800240020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1061,5 +1061,15 @@ object frmMenu: TfrmMenu
       00000000FFFFFFFF000000000000000000000000FFFFFFFF0000000000000000
       00000000FFFFFFFF000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object ClientDataSet1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 98
+    Top = 70
+  end
+  object FDQuery1: TFDQuery
+    Left = 140
+    Top = 35
   end
 end

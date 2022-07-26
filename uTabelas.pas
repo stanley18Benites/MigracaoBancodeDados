@@ -73,7 +73,8 @@ type
     procedure aplicaBorda;
     procedure apllyStyle;
     procedure configuraNomeColunaDBGrid;
-    procedure alimentaDados(sNomeColuna : String; sNomeTabela : String);
+    procedure alimentaDados(sNomeColuna : String; sNomeTabela : String; pos : Integer);
+    procedure inserirDados;
   public
     class procedure criarForm ();
   end;
@@ -93,7 +94,7 @@ var
   objDBGridMySQL : buscarTabelas ;
   cds         : TClientDataSet ;
   valor_linha , valor_coluna : String ;
-
+  arrayNomeTabelas : Array of TClientDataSet ;
 class procedure TfrmConsulta.criarForm ();
 begin
   frmConsulta := TfrmConsulta.Create(Application);
@@ -142,14 +143,34 @@ begin
 end;
 
 procedure TfrmConsulta.SpeedButton2Click(Sender: TObject);
-var i : Integer ;
 begin
-  for I := 1 to StringGrid1.RowCount do
-  begin
-    objMY.buscaColuna(StringGrid1.Cells[0,i] , label_nomeTabSelecionada.caption);
-  end;
+    inserirDados() ;
+end;
 
-  //OBJmy.inserirTabelas('INSERT INTO :tabela () values () ');
+procedure TfrmConsulta.inserirDados();
+var
+  i ,count : Integer ;
+  s : String ;
+begin
+  i     := 0 ;
+  count := 0 ;
+  while not DBGrid6.DataSource.DataSet.Eof do
+  begin
+    for I := 0 to length(arrayNomeTabelas) - 1 do
+    begin
+      objMY.conexaoMY.Qry.Close;
+      objMY.conexaoMY.Qry.SQL.Clear;
+      objMY.conexaoMY.Qry.SQL.Add('INSERT INTO cad_grupo ( ID , ESTABELECIMENTO)  VALUES (:ID , :ESTABELECIMENTO)');
+      cds.append ;
+      cds.First ;
+      while not cds.Eof do
+      begin
+        objMY.conexaoMY.Qry.ParamByName('id').AsString              := cds.FieldByName('teste').AsString ;
+        objMY.conexaoMY.Qry.ParamByName('estabelecimento').AsString := cds.FieldByName('teste').AsString ;
+        objMY.conexaoMY.Qry.ExecSQL ;
+      end;
+    end;
+  end;
 end;
 
 procedure TfrmConsulta.StringGrid1DragDrop(Sender, Source: TObject; X,
@@ -169,32 +190,30 @@ begin
       if not( trim( s )='' ) then
       begin
         StringGrid1.Cells[gc.X,gc.Y] := s ;
-        alimentaDados(s , label_nomeTabSelecionada.Caption) ;
+        //arrayNomeTabelas[gc.Y] := label_nomeTabSelecionada.Caption ;
+        alimentaDados(s , label_nomeTabSelecionada.Caption, gc.Y) ;
       end;
     end;
 
   end;
 end;
 
-procedure TfrmConsulta.alimentaDados(sNomeColuna : String; sNomeTabela : String );
+procedure TfrmConsulta.alimentaDados(sNomeColuna : String; sNomeTabela : String ; pos : Integer);
 var
   q : buscarTabelas ;
-  i : Integer ;
+  //i : Integer ;
 begin
   try
-    i := 0 ;
-    q   := buscarTabelas.Create(tpFirebird);
+    //i := 0 ;
+    q := buscarTabelas.Create(tpFirebird);
     q.conexaoFB.setFQry('SELECT ' + sNomeColuna + ' FROM ' + sNomeTabela) ;
-    while not q.conexaoFB.getFQry.Eof  do
+    //while not q.conexaoFB.getFQry.Eof  do
     begin
       cds.FieldDefs.Add(q.conexaoFB.getFQry.FieldByName(sNomeColuna).AsString, ftString, 50);
-      q.conexaoFB.getFQry.Next;
+      //q.conexaoFB.getFQry.Next;
     end;
 
-    while not cds.Eof do
-    BEGIN
-      StringGrid1.Rows[1].Add(cds.FieldByName(sNomeColuna).AsString);
-    END;
+    arrayNomeTabelas[pos] := cds ;
   finally
     q.Free;
   end;
@@ -230,6 +249,7 @@ procedure TfrmConsulta.dbGridMySQLCellClick(Column: TColumn);
 begin
   dbGrid6.DataSource    := objDBGridMySQL.buscarTabelaEspecifica(dbGridMySQL.Columns.Items[0].Field.AsString ) ;
   StringGrid1.RowCount  := dbGrid6.DataSource.DataSet.RecordCount;
+  SetLength( arrayNomeTabelas ,  DBGrid6.DataSource.DataSet.RecordCount ) ;
 end;
 
 procedure TfrmConsulta.configuraNomeColunaDBGrid;

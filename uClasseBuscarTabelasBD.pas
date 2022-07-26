@@ -20,6 +20,7 @@ type buscarTabelas = class
       FUsuario    : String ;
       FPorta      : String ;
       FServidor   : String ;
+      cds         : TClientDataSet ;
       GravaIni    : TIniFile;
   public
     Constructor Create( tipo : TTipoBD );

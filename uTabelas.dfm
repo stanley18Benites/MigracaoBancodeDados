@@ -193,16 +193,16 @@ object frmConsulta: TfrmConsulta
         TabOrder = 1
       end
       object Panel9: TPanel
-        Left = 12
+        Left = 17
         Top = 49
-        Width = 130
+        Width = 126
         Height = 465
         BevelOuter = bvNone
         TabOrder = 2
         object StringGrid1: TStringGrid
-          Left = 3
-          Top = 19
-          Width = 128
+          Left = 5
+          Top = 18
+          Width = 121
           Height = 442
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -264,7 +264,7 @@ object frmConsulta: TfrmConsulta
           Flat = True
           OnClick = SpeedButton2Click
           OnMouseMove = SpeedButton1MouseMoveSpeedButton1MouseMoveSpeedButton2MouseMove
-          ExplicitTop = 5
+          ExplicitHeight = 45
         end
       end
       object Panel8: TPanel
